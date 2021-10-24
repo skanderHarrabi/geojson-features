@@ -1,10 +1,14 @@
 import React from 'react';
-import './App.css';
+import './components/feature-item/Item';
+import Item from './components/feature-item/Item';
+import './App.scss';
 
 function App() {
   return (
     <div className="App">
-
+      <ul>
+      <Item />
+      </ul>
     </div>
   );
 }
