@@ -34,55 +34,46 @@ const Item = () => {
     setIsModalVisible(false);
   };
 
+  //set up features comming from the api or localstorage
+  const setFeatures = (features:any) => {
+    let featuresTab: propType[] = [];
+    features.forEach((feature: any) => {
+        let item : Feature | LineString | MultiLineString | Point;
+        switch(feature.geometry.type) {
+            case "Polygon": {
+                item = setPolygonAttributes(feature);
+                break;
+            }
+            case "LineString": {
+                item = setLineStringAttributes(feature);
+                break;
+            }
+            case "MultiLineString": {
+                item = setMultiLineStringAttributes(feature);
+                break;
+            }
+            default : {
+                item = setPointAttributes(feature);
+            }
+        }
+        featuresTab.push(item);
+    });
+    setData(featuresTab);
+    setPaginatedData(olddata => olddata = featuresTab.slice(0,10));
+  }
+
   const fetchData = async (): Promise<void> => {
       try {
+          let features;
           if(!localStorage.getItem('cachedData')) {
-              const response = await getFeatures();
-              const {features} = osmtogeojson(response.data);
-              localStorage.setItem('cachedData',JSON.stringify(features));
-              let featuresTab: propType[] = [];
-              features.forEach(({geometry,properties,id}) => {
-                let item: Feature = {
-                  id: id,
-                  user: properties.user,
-                  name: properties.name,
-                  timestamp: properties.timestamp,
-                  type: geometry.type,
-                  boundary: properties.boundary,
-                  coordinates: geometry.type === 'Point' ? geometry.coordinates : [],
-                  geomatryType: geometry.type
-                };
-                featuresTab.push(item);
-              });
-              setData(featuresTab);
-              setPaginatedData(featuresTab.slice(0,10));
+            const response = await getFeatures();
+            features = osmtogeojson(response.data).features;
+            //cache data comming from the api into the localstorage
+            localStorage.setItem('cachedData',JSON.stringify(features));
           } else {
-            const features = JSON.parse(localStorage.getItem('cachedData') as string);
-            let featuresTab: propType[] = [];
-            features.forEach((feature: any) => {
-                let item : Feature | LineString | MultiLineString | Point;
-                switch(feature.geometry.type) {
-                    case "Polygon": {
-                        item = setPolygonAttributes(feature);
-                        break;
-                    }
-                    case "LineString": {
-                        item = setLineStringAttributes(feature);
-                        break;
-                    }
-                    case "MultiLineString": {
-                        item = setMultiLineStringAttributes(feature);
-                        break;
-                    }
-                    default : {
-                        item = setPointAttributes(feature);
-                    }
-                }
-                featuresTab.push(item);
-              });
-              setData(featuresTab);
-              setPaginatedData(olddata => olddata = featuresTab.slice(0,10));
+            features = JSON.parse(localStorage.getItem('cachedData') as string);
           }
+          setFeatures(features);
       } catch(err) {
         console.error(err);
         setErrors(true)
