@@ -1,13 +1,16 @@
 import React from 'react';
-import { Feature,  } from '../../types/types';
+import { Polygon } from '../../types/types';
+
+import './Polygon.scss';
 
 type propType = {
-    feature: Feature;
+    feature: Polygon;
+    showModal: () => void;
 }
 
-const PolygonFeatures: React.FC<propType> = ({feature}) => {
+const PolygonFeatures: React.FC<propType> = ({feature, showModal}) => {
     return (
-            <li>
+            <li className="polygon-item" onClick={showModal}>
                 <div className="feature-container">
                     <div className="feature-properties">
                         <label><strong>Id</strong></label>

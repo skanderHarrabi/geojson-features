@@ -1,0 +1,21 @@
+.custom-search {
+    width: 70%;
+    text-align: center;
+
+    .ant-form {
+        align-items: center !important;
+        justify-content: center !important;
+
+        .ant-form-item {
+            margin-bottom: 10px !important;
+        }
+    }
+
+    .submit-button {
+        flex: 100% !important;
+
+        .ant-form-item-control {
+            margin:auto !important;
+        }
+    }
+}

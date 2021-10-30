@@ -5,11 +5,12 @@ import './LineString.scss';
 
 type propType = {
     feature: LineString;
+    showModal: () => void;
 }
 
-const LineStringFeatures: React.FC<propType> = ({feature}) => {
+const LineStringFeatures: React.FC<propType> = ({feature, showModal}) => {
     return (
-        <li className="Line-string-item">
+        <li className="line-string-item" onClick={showModal}>
                 <div className="feature-container">
                     <div className="feature-properties">
                         <label><strong>Id</strong></label>

@@ -1,13 +1,16 @@
 import React from 'react';
 import { MultiLineString } from '../../types/types';
 
+import './MultiLineString.scss';
+
 type propType = {
     feature: MultiLineString;
+    showModal: () => void;
 }
 
-const MultiLineStringFeatures : React.FC<propType> = ({feature}) => {
+const MultiLineStringFeatures : React.FC<propType> = ({feature, showModal}) => {
     return (
-        <li>
+        <li className="multi-line-string-item" onClick={showModal}>
             <div className="feature-container">
                 <div className="feature-properties">
                     <label><strong>Id</strong></label>

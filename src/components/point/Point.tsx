@@ -1,13 +1,16 @@
 import React from 'react';
 import { Point } from '../../types/types';
 
+import './Point.scss';
+
 type propType = {
     feature: Point;
+    showModal: () => void;
 }
 
-const PointFeatures : React.FC<propType> = ({feature}) => {
+const PointFeatures : React.FC<propType> = ({feature, showModal}) => {
     return (
-        <li>
+        <li className="point-item" onClick={showModal}>
             <div className="feature-container">
                 <div className="feature-properties">
                     <label><strong>Id</strong></label>

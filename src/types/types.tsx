@@ -1,4 +1,4 @@
-export interface Feature {
+export interface Polygon {
     geomatryType: string,
     coordinates?: any,
     name?: string,
@@ -42,3 +42,14 @@ export interface Point {
     user?: string,
     type?: string
 }
+
+export type customSearchCoordinates = {
+    latitudeBottom: string
+    latitudeTop: string
+    longitudeLeft: string
+    longitudeRight: string
+}
+
+export type ItemPropType = Polygon | LineString | MultiLineString | Point;
+
+export type Feature = any;
