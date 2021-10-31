@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+# Open street map Features
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Application to display the open street map data comming from the api 
 
-## Available Scripts
+### Installation
 
-In the project directory, you can run:
+```sh
+$ cd geojson-features
+$ npm install
+```
+### Runing the app
+Starting node server at port 3000
+When first the app load i set up an a default values for the api to search data but feel free to search on any other area by filling and submitting the form 
+default values : 
+  - Longitude Left : 11.54
+  - Latitude Bottom: 48.14 
+  - Longitude Right: 11.543
+  - LatitudeTop: 48.145
+```sh
+$ npm start
+```
 
-### `npm start`
+### Runing Tests
+I dont implement a lot of test here just the basic, bescause first i am new to jest and second i couldn't test for example the api because of the response data
+```sh
+$ npm run test
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### ScreenShots
+![Screenshot 2021-10-31 at 20 38 24](https://user-images.githubusercontent.com/36156046/139598962-5e453bcc-1f07-4c1e-a88d-03429c6730eb.png)
+![Screenshot 2021-10-31 at 20 38 17](https://user-images.githubusercontent.com/36156046/139598963-a34d4fb2-0eb3-4a4d-b5e8-21f36d37abfc.png)
+![Screenshot 2021-10-31 at 20 38 12](https://user-images.githubusercontent.com/36156046/139598964-af1b07a6-ac78-437d-9bd1-c9f40b63df98.png)
+![Screenshot 2021-10-31 at 20 37 50](https://user-images.githubusercontent.com/36156046/139598966-91a4c9f5-c1f9-44ed-b082-0825a29ce619.png)
+![Screenshot 2021-10-31 at 20 37 44](https://user-images.githubusercontent.com/36156046/139598967-754cea11-a1dd-49bd-9bf6-d15e216677ec.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Small Demo :
 
-### `npm test`
+https://user-images.githubusercontent.com/36156046/139598954-be8edf04-9b1b-49d4-805c-13d48c3e112a.mov
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
