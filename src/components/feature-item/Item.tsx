@@ -42,7 +42,7 @@ const Item: React.FC = () => {
     setFeatureToDesplay([]);
   };
 
-  //set up features comming from the api or localstorage
+  //devide the data comming from the api into four categories and store them in the localstorage
   const setFeatures = (features: Feature) => {
     let featuresTab: ItemPropType[] = [];
     features.forEach((feature: Feature) => {
@@ -71,6 +71,7 @@ const Item: React.FC = () => {
     setLoading(false);
   }
 
+  //filter the data when changing the page
   const onChange = (page: number) => {
     setPageNumber(page);
     const indexOfLastPost = page * 10;
