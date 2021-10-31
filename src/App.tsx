@@ -1,7 +1,6 @@
 import React from 'react';
 import './components/feature-item/Item';
 import Item from './components/feature-item/Item';
-import { Pagination } from 'antd';
 
 import './App.scss';
 

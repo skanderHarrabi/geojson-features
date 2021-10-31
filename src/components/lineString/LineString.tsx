@@ -22,7 +22,7 @@ const LineStringFeatures: React.FC<propType> = ({feature, showModal}) => {
                     </div>
                     <div className="feature-properties">
                         <label><strong>To</strong></label>
-                        <p>{feature.to}</p>
+                        <p>{feature.to || "unprovided"}</p>
                     </div>
                     <div className="feature-properties">
                         <label><strong>Operator</strong></label>

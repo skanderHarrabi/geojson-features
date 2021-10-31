@@ -1,16 +1,9 @@
 import axiosInstance from "../config/axios-instance";
-import osmtogeojson from 'osmtogeojson';
 import { customSearchCoordinates, Feature } from "../types/types";
 
-type fetchDataparams = {
-  setApiData: (features:Feature) => void,
-  setFeatures: (features:Feature) => void,
-  setErrors: (param: boolean) => void,
-  coordinates?: customSearchCoordinates
-}
-
-export const getFeatures = () => {
+export const getFeatures = (coordinates : customSearchCoordinates = {longitudeLeft: '11.54', latitudeBottom: '48.14', longitudeRight: '11.543', latitudeTop: '48.145'}) => {
     return axiosInstance({
+      params: { bbox: `${coordinates.longitudeLeft},${coordinates.latitudeBottom},${coordinates.longitudeRight},${coordinates.latitudeTop}` },
       method: "get"
     });
 }
@@ -75,23 +68,4 @@ export const setMultiLineStringAttributes = ({properties, geometry, id}: Feature
     geomatryType: geometry.type
   };
   return item;
-}
-
-export const fetchData = async (setApiData: any, setFeatures: any, setErrors: any, coordinates?: customSearchCoordinates) => {
-  try {
-      let features;
-
-      if(!localStorage.getItem('cachedData')) {
-        const response = await getFeatures();
-        features = osmtogeojson(response.data).features;
-        //cache data comming from the api into the localstorage
-        localStorage.setItem('cachedData',JSON.stringify(features));
-      } else {
-        features = JSON.parse(localStorage.getItem('cachedData') as string);
-      }
-      setApiData(features);
-      setFeatures(features);
-  } catch(err) {
-    setErrors(true)
-  }
 }
